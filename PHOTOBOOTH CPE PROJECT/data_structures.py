@@ -1,4 +1,3 @@
-
 from collections import deque
 from dataclasses import dataclass, field
 from copy import deepcopy
@@ -8,11 +7,10 @@ from uuid import uuid4
 
 LAYOUTS = {'1x4': (1, 4), '2x4': (2, 4), '2x3': (2, 3),
            '1x3': (1, 3), '2x2': (2, 2), '3x3': (3, 3),
-           '1x2': (1, 2), '3x2': (3, 2)}  # dictionary/hash table
+           '1x2': (1, 2), '3x2': (3, 2)}  
 
 
 class LinkedPhotoOrder:
-   
     class Node:
         def __init__(self, value):
             self.value, self.next = value, None
