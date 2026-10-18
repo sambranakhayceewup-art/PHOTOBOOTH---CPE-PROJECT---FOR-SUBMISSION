@@ -1,8 +1,3 @@
-"""Real Python data structures used by the PetalPop Flask API.
-
-No photographs are saved on disk. Sessions contain photo metadata only; the
-browser holds full-resolution images until a final strip is sent for printing.
-"""
 from collections import deque
 from dataclasses import dataclass, field
 from copy import deepcopy
@@ -16,7 +11,6 @@ LAYOUTS = {'1x4': (1, 4), '2x4': (2, 4), '2x3': (2, 3),
 
 
 class LinkedPhotoOrder:
-    """Singly linked list: append, remove, traverse photo IDs in capture order."""
     class Node:
         def __init__(self, value):
             self.value, self.next = value, None
@@ -58,7 +52,6 @@ class LinkedPhotoOrder:
 
 
 class EditStack:
-    """LIFO stack for undoing changes to photo order, filters and stickers."""
     def __init__(self, limit=30):
         self.items, self.limit = [], limit
 
@@ -154,7 +147,6 @@ class Session:
 
 
 class SessionStore:
-    """Dictionary lookup for independent sessions with expiration and locking."""
     def __init__(self, max_sessions=100, ttl=3600):
         self.sessions, self.max_sessions, self.ttl = {}, max_sessions, ttl
         self.lock = RLock()
@@ -185,7 +177,6 @@ class SessionStore:
 
 
 class PrintQueue:
-    """FIFO queue: queued jobs are processed in the order received."""
     def __init__(self):
         self.jobs = deque()
         self.lock = RLock()
