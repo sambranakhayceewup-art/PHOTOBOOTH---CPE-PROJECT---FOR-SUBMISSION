@@ -1,4 +1,4 @@
-// Python data-structures integration. Photos remain on the device; metadata is synchronized.
+
 let pythonSession=null, pythonPhotoIds=[], syncingEdit=false, editDebounce=null;
 async function dsCall(endpoint,body){
   const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
@@ -24,8 +24,7 @@ async function detectRearTorch(){
   if(facing!=='environment'||!stream)return;
   const track=stream.getVideoTracks()[0];
   try{torchSupported=!!track.getCapabilities?.().torch}catch(e){}
-  // iOS Safari may omit the capability even on phones with a rear LED.
-  // A successful constraint application is the only reliable confirmation.
+
 }
 function updateFlashButton(){
   const control=$('flash'),status=$('flashStatus');if(!control)return;
