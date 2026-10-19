@@ -18,7 +18,7 @@ def home():
 
 @app.get('/api/health')
 def health():
-    return jsonify(status='ok', app='PetalPop', engine='Python Flask + Data Structures')
+    return jsonify(status='ok', app='just_clicked', engine='Python Flask + Data Structures')
 
 
 @app.get('/api/data-structures')
@@ -128,7 +128,7 @@ def print_ready():
     except ValueError as exc:
         return jsonify(error=str(exc)), 400
     return send_file(output, mimetype='image/png', as_attachment=True,
-                     download_name='PetalPop_Print_300DPI.png')
+                     download_name='just_clicked_Print_300DPI.png')
 
 
 @app.errorhandler(413)
